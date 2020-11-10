@@ -1,2 +1,2 @@
-# predict_sliding.py
+# predict_sliding
 eval semantic segmentation using sliding and tta
