@@ -35,8 +35,8 @@ def slide(model, scale_image, num_classes=6, crop_size=512, overlap=1/2, scales=
     full_probs = torch.zeros((N, num_classes, H_, W_), device=scale_image.device) #
     count_predictions = torch.zeros((N, num_classes, H_, W_), device=scale_image.device) #
 
-    h_overlap_length = int(overlap*crop_size)
-    w_overlap_length = int(overlap*crop_size)
+    h_overlap_length = int((1-overlap)*crop_size)
+    w_overlap_length = int((1-overlap)*crop_size)
 
     h = 0
     slide_finish = False
@@ -130,7 +130,7 @@ def test(testloader, model, savedir, device):
                 num_classes=6,
                 crop_size=512,
                 overlap=1/2,
-                scales=[0.75, 1.0, 1.25],
+                scales=[1.0],
                 flip=True)
 
             _, output = torch.max(output, 1)
